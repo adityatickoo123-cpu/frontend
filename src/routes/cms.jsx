@@ -49,6 +49,9 @@ const CMS = () => {
         try {
             const response = await fetch("/api/woods", {
                 method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token"),
+                },
             });
 
             const result = await response.json(); // or response.text()
@@ -89,6 +92,7 @@ const CMS = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token"),
                 },
                 body: JSON.stringify(raw),
             });
@@ -119,6 +123,7 @@ const CMS = () => {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token"),
                 },
             });
 
@@ -151,6 +156,7 @@ const CMS = () => {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token"),
                 },
                  body: JSON.stringify(raw),
             });
@@ -193,8 +199,8 @@ const CMS = () => {
                             </thead>
 
                             <tbody>
-                                {data?.map((item) => (
-                                    <tr key={item.id}>
+                                {Array.isArray(data) && data.map((item) => (
+                                    <tr key={item.id || item._id}>
                                         <td>{item.name}</td>
                                         <td>{item.description}</td>
                                         <td>
