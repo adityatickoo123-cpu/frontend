@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://mywoods-api.onrender.com/api/:path*"
+      "destination": "https://backend-60v0.onrender.com/api/:path*"
     },
     {
       "source": "/(.*)",
